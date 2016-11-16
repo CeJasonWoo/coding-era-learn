@@ -1,0 +1,77 @@
+<!--see
+
+Flex 布局教程：语法篇
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
+
+Flex 布局教程：实例篇
+http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
+
+圣杯布局2
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <style>
+                .gray {
+                        background: #e2e2e2;
+                        margin: 1px;
+                }
+                
+                .HolyGrail {
+                        display: flex;
+                        min-height: 100vh;
+                        flex-direction: column;
+                }
+                
+                header,
+                footer {
+                        flex: 1;
+                }
+                
+                .HolyGrail-body {
+                        display: flex;
+                        flex: 1;
+                }
+                
+                .HolyGrail-content {
+                        flex: 1;
+                }
+                
+                .HolyGrail-nav,
+                .HolyGrail-ads {
+                        /* 两个边栏的宽度设为12em */
+                        flex: 0 0 12em;
+                }
+                
+                .HolyGrail-nav {
+                        /* 导航放到最左边 */
+                        order: -1;
+                }
+                
+                @media (max-width: 768px) {
+                        .HolyGrail-body {
+                                flex-direction: column;
+                                flex: 1;
+                        }
+                        .HolyGrail-nav,
+                        .HolyGrail-ads,
+                        .HolyGrail-content {
+                                flex: auto;
+                        }
+                }
+        </style>
+</head>
+
+<body class="HolyGrail">
+        <header>...</header>
+        <div class="HolyGrail-body">
+                <main class="HolyGrail-content gray">main flex:1</main>
+                <nav class="HolyGrail-nav gray"> nav flex: 0 0 12em;</nav>
+                <aside class="HolyGrail-ads gray">aside flex: 0 0 12em;</aside>
+        </div>
+        <footer>...</footer>
+</body>
+
+</html>

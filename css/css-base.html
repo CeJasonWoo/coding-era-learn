@@ -1,0 +1,536 @@
+<!--see
+《CSS权威指南》基础复习+查漏补缺
+http://www.cnblogs.com/ys-ys/p/5403437.html
+-->
+
+<html>
+
+<head>
+	<title></title>
+
+	<style type="text/css">
+		.row {
+			width: 100%;
+			float: left;
+		}
+		
+		h6 {
+			color: gray;
+		}
+		/*行内元素*/
+		
+		.mar-strong {
+			padding: 30px;
+			background: green
+		}
+		/*背景属性*/
+		
+		.div-bg {
+			width: 100%;
+			height: 500px;
+		}
+		
+		.bg-attachment {
+			background: green;
+			background-image: url(../resource/test.jpg);
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		
+		.div-float {
+			float: left;
+			margin: 50px
+		}
+		
+		.span {
+			margin: 50px
+		}
+		
+		.span-float {
+			float: left;
+		}
+		/*清除浮动*/
+		
+		.div-mar {
+			width: 100px;
+			padding: 50px
+		}
+		
+		.div-red {
+			background: red
+		}
+		
+		.div-yellow {
+			background: yellow
+		}
+		
+		.div-gray {
+			background: gray
+		}
+		
+		.div-orange {
+			background: orange
+		}
+		
+		.div-green {
+			background: green
+		}
+		
+		.div-float-left {
+			float: left
+		}
+		
+		.div-float-right {
+			float: right
+		}
+		
+		.div-clear-both {
+			clear: both
+		}
+		
+		.div-clear-left {
+			clear: left
+		}
+		
+		.div-clear-right {
+			clear: right
+		}
+		/*生成内容*/
+		
+		.div-content:before {
+			content: "[ "attr(value)" ] "
+		}
+		
+		.div-content:after {
+			content: " hello world"
+		}
+		/*z-index之间的影响*/
+		
+		.div-out {
+			width: 400px;
+			height: 200px;
+			background: black;
+			border-bottom: 1px solid white;
+			position: relative;
+		}
+		
+		.div-index-1 {
+			width: 200px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			bottom: -50px;
+			z-index: 1;
+		}
+		
+		.div-index-2 {
+			width: 200px;
+			height: 100px;
+			background: yellow;
+			position: absolute;
+			top: -50px;
+			left: 20px;
+			z-index: 1;
+		}
+		/*优先满*/
+		
+		.impt {
+			color: green !important
+		}
+		/*布局*/
+		
+		.position-relative {
+			position: relative;
+		}
+		
+		.position-absolute {
+			position: absolute;
+		}
+		/*缩进*/
+		
+		.indent {
+			text-indent: 5em;
+		}
+		/*伪类*/
+		/* 提示：在 CSS 定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。*/
+		/* 提示：在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。*/
+		/* 提示：伪类名称对大小写不敏感*/
+		
+		a:link {
+			color: red
+		}
+		/* 未访问的链接 */
+		
+		a:visited {
+			color: yellow
+		}
+		/* 已访问的链接 */
+		
+		a:hover {
+			color: green
+		}
+		/* 鼠标移动到链接上 */
+		
+		a:active {
+			color: gray
+		}
+		/* 选定的链接 */
+		
+		.pseudo-classes p:first-child {
+			font-weight: bold;
+		}
+		/*伪元素	*/
+		/*注释："first-line" 伪元素只能用于块级元素。*/
+		
+		.pseudo-elements p:first-line {
+			color: #ff0000;
+		}
+		/*注释："first-letter" 伪元素只能用于块级元素。*/
+		
+		.pseudo-elements p:first-letter {
+			font-size: xx-large;
+		}
+		/*文字过长自动转换省略号*/
+		
+		.text {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 100px;
+		}
+		/*多行居中*/
+		
+		.middle-outer {
+			display: table;
+			width: 578px;
+			height: 42px;
+			overflow: hidden;
+			background: #eee;
+		}
+		
+		.middle {
+			display: table-cell;
+			vertical-align: middle;
+			margin-left 10px;
+		}
+	</style>
+
+	<!-- 多行居中 -->
+	<!--[if lte IE 7]>
+	<style>
+	.outer{position:relative;}
+	.middle{position: absolute; top: 50%;}
+	.inner{position: relative; top:-50%}
+	</style>
+	<![endif]-->
+</head>
+
+<body>
+
+	<h1>case1</h1>
+	<h6>当padding应用于行内元素，则对水平面有影响，对垂直面无影响(在没有设置background的情况下)</h6>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		<strong class="mar-strong">hello world</strong> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	</p>
+	<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+
+	<h1>case2</h1>
+	<h6>背景图片跟随滚动条，background-attachment: fixed</h6>
+	<div class="div-bg bg-attachment"></div>
+
+	<div class="row">
+		<h1>case3</h1>
+		<h6>浮动元素周围外边距不会合并</h6>
+		<div class="div-float">HELLO WORLD</div>
+		<div class="div-float">hello world</div>
+		<div class="div-clear-left"></div>
+		<span style="margin:10px;">aaa</span>
+		<span style="margin:10px;">aaa</span>
+
+		<h6>外边距垂直合并
+			<p>垂直相邻的外边距会进行合并。两个外边距中较小的一个会被较大的一个合并(你也可以理解为"重叠")。
+			</p>
+		</h6>
+		<div class="first-div" style="margin-bottom:50px;">this is div-1</div>
+		<div class="second-div" style=" margin-top:20px;">this is div-2</div>
+		<div class="second-div" style=" margin-right:20px;display:inline;">this is div-2</div>
+<div class="first-div" style="margin-left:50px;display:inline;">this is div-1</div>
+		
+
+
+	</div>
+
+	<div class="row">
+		<h1>case4</h1>
+		<h6>浮动元素会生成一个块级框，不论这个元素本身是什么</h6>
+		<span class="span span-float">HELLO WORLD</span>
+		<span class="span span-float">hello world</span>
+	</div>
+
+	<div class="row">
+		<h1>case5</h1>
+		<h6>清除浮动</h6>
+		<div class="div-mar">test</div>
+		<div class="div-mar div-red div-float-right">HELLO WORLD</div>
+		<div class="div-mar div-yellow div-float-left div-clear-right">Hello World</div>
+		<div class="div-mar div-gray div-float-left div-clear-left">test</div>
+	</div>
+
+	<div class="row">
+		<h1>case6</h1>
+		<h6>"content" 生成内容</h6>
+		<div class="div-content div-green" value="H">ello World</div>
+	</div>
+
+	<div class="row">
+		<h1>case7</h1>
+		<h6>在不同元素内的子元素使用z-index的时候受不受父(祖先)元素之间关系的影响?不受影响。</h6>
+		<div class="div-out">
+			<div class="div-index-1"></div>
+		</div>
+		<div class="div-out">
+			<div class="div-index-2"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<h1>case8</h1>
+		<h6>元素</h6>
+		<h6>
+			<strong>非替换元素</strong>
+			<p>如果元素内容包含在文档中，则称之为非替换元素。如：&lt;p&gt;&lt;/p&gt;</p>
+
+			<strong>替换元素</strong>
+			<p>指用作为其他内容占位符的一个元素。如：&lt;img /&gt;、&lt;input /&gt;</p>
+
+			<strong>块级元素</strong>
+			<p>在正常流中，会在其框之前或之后生成"换行"，通过声明"display:block"可以让元素生成块级框。</p>
+
+			<strong>行内元素</strong>
+			<p>这些元素不会在之前或之后生成"行分隔符"，它们是块级元素的后代，通过"display:inline"可以让元素生成一个行内框。</p>
+		</h6>
+
+		<div class="div-green">test div</div>
+		<div class="div-green">test div</div>
+		<hr/>
+		<p class="div-red">test p</p>
+		<p class="div-red">test p</p>
+		<hr/>
+		<span class="div-gray"> test span </span>
+		<span class="div-gray"> test span </span>
+		<hr/>
+		<h6>
+			<p>把元素显示为内联元素 p {display: inline}</p>
+			<p>把元素显示为块级元素 span {display: block}</p>
+		</h6>
+		<span class="div-gray" style="display:block;"> test span block </span>
+		<span class="div-gray" style="display:block;"> test span block </span>
+		<hr/>
+		<div class="div-green" style="display:inline;">test div inline</div>
+		<div class="div-green" style="display:inline;">test div inline</div>
+
+		<hr/>
+		<div class="div-green div-float-left" style="">test div float</div>
+		<div class="div-green div-float-left" style="">test div float</div>
+
+	</div>
+
+	<div class="row">
+		<h1>case9</h1>
+		<h6>优先级</h6>
+		<div class="impt" style="color:red">hello world</div>
+	</div>
+
+	<div class="row">
+		<h1>case10</h1>
+
+		<h6>水平居中text-align</h6>
+		<div class="div-mar div-gray">test</div>
+		<div class="div-mar div-green" style="text-align:center;">test</div>
+		<h6>垂直居中line-height</h6>
+		<div class="div-mar div-gray" style="height:40px;">test</div>
+		<div class="div-mar div-green" style="height:40px;line-height:40px;">test</div>
+
+		<h6>宽度不够时,自动居中 margin:0 auto;</h6>
+		<span class="div-gray" style="">span test</span>
+		<div class="div-green" style="">div test</div>
+		<div class="div-gray" style="width:-moz-fit-content;width:-webkit-fit-content;margin:0 auto;">div test</div>
+
+		<h6>多行文字居中 父display: table 子display: table-cell; vertical-align: middle;</h6>
+		<div class="middle-outer">
+			aaa aaa
+			<div class="middle">eee</div>
+			<div class="middle">eee</div>
+			<div class="middle">eee</div>
+			<p>aaa</p>
+			<p>aaa</p>
+			<p>aaa</p>
+			<p>aaa</p>
+			<p class="middle">bbb</p>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6>
+			<p>相对定位</p>
+			1.相对于紧跟的上一个元素的位置 2.如果用到相对定位，紧随他的DIV是不会出现在其的下方，而是和其在同一个高度出现
+		</h6>
+		<div class="position-relative div-gray" style="top:20px;left:40px;">
+			relative test
+		</div>
+		<div class="div-green">
+			relative test after
+		</div>
+
+		<h6>
+			<p>绝对定位</p>
+			1.top等属性是相对于整个页面 2.使用绝对定位的DIV前面的或者后面的层会认为这个层并不存在，丝毫不影响到他们。
+		</h6>
+		<div class="position-absolute div-red" style="width:200px;right:0;">
+			absolute test
+		</div>
+		<div class="div-green">
+			absolute test after
+		</div>
+
+		<h6>
+			<p>父：相对定位+子：绝对定位</p>
+			子元素的位置将相对于父元素，而不是整个页面。
+		</h6>
+		<div class="position-relative div-red" style="width:100%;height:30px;">
+			parent relative test
+			<div class="position-absolute div-gray" style="top:0;right:0;width:200px;height:40px;">
+				child absolute test
+			</div>
+		</div>
+
+		<h6>
+			<p>父：绝对定位+子：相对定位</p>
+			子元素相对于父元素
+		</h6>
+		<div class="position-absolute div-red" style="width:100%;height:30px;">
+			parent absolute test
+			<div class="position-relative div-gray" style="top:10px;left:40px;width:100px;height:30px;">
+				child relative test
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top:50px;">
+		<h1>case12</h1>
+		<h6>缩进:行内元素无法缩进</h6>
+		<div class="indent">div缩进</div>
+		<p class="indent">p元素缩进</p>
+		<span class="indent">span缩进</span>
+		<p class="indent"><span>span缩进</span>p元素缩进</p>
+
+		<h6>缩进继承:p继承了div#inner的缩进</h6>
+		<div id="outer">
+			<div id="inner" class="indent" style="">
+				some text. some text. some text. some text. some text. some text. some text. some text. some text. some text.
+				<p>this is a paragragh.this is a paragragh.this is a paragragh.this is a paragragh.this is a paragragh.this is a paragragh.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<h1>case13</h1>
+		<h6>伪类</h6>
+
+		<a href="">测试链接</a>
+
+		<div class="pseudo-classes">
+			<p>p-first-child测试 加粗</p>
+			<p>p-first-child测试</p>
+		</div>
+
+		<h6>伪元素</h6>
+		<div class="pseudo-elements">
+			<p>aaaaaaaaaaaaaaaaaaaaaaaaa首行变色 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			</p>
+			<p>aaaaaaaaaa</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<h1>case14</h1>
+		<h6>文字过长自动转换省略号</h6>
+		<div class="text">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+
+		<h6>缩放</h6>
+		<div style="zoom:0.6;">aaaaaa</div>
+
+		<h6>背景颜色透明</h6>
+		<div class="div-mar div-green">
+			<div class="position-absolute" style="left:187;background: rgba(0, 0, 0, 0.3);">
+				aaaaa
+			</div>
+		</div>
+
+		<h6>计算calc</h6>
+		<div class="div-gray">test</div>
+		<div class="div-red" style="width:100%">test</div>
+		<div class="div-green" style="width: -webkit-calc(100% - 120px); width: calc(100% - 120px);">test</div>
+	</div>
+
+	<div class="row">
+		<h1>case15</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case16</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+	<div class="row">
+		<h1>case11</h1>
+		<h6></h6>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Margin</title>
+
+    <style>
+        body {}
+        
+        .float-left {
+            float: left;
+        }
+        
+        .border {
+            border: solid 5px;
+        }
+        
+        .gray {
+            background: #e2e2e2;
+        }
+        
+        .sq {
+            width: 50px;
+            height: 50px;
+            background: green;
+        }
+        
+        .float-clear {
+            clear: both;
+            height: 10px;
+        }
+        
+        .box-sizing {
+            box-sizing: border-box;
+        }
+
+        .inline{
+            /*display: inline;*/
+        }
+    </style>
+</head>
+
+<body>
+    <h1>消除border对宽度的影响</h1>
+<div class="border float-left sq ">50+5*2px</div>
+<div class="float-left sq ">50px</div>
+<div class="border float-left sq box-sizing">50px</div>
+<div class="sq" style="clear: both;">50px</div>
+<div class="border sq box-sizing" style="clear: both;">50px</div>
+
+    <div class="float-clear"></div>
+        <hr>
+
+    <p>父100px，子50px，border为5px</p>
+    <div class="border gray float-left" style="width:100px;height:100px;">父</div>
+    <div class="border float-left sq">子</div>
+
+    <div class="float-clear" "></div>
+        <hr>
+     <p>子margin-left:-100px;，因为boder影响，所以没有和父div对齐</p>
+
+    
+
+    <div class="border gray float-left " style="width:100px;height:100px; "></div>
+    <div class="border float-left sq " style="margin-left:-100px; "></div>
+
+    <div class="float-clear ""></div>
+    <hr>
+    <p>消除影响：margin-left:-20px; box-sizing: border-box;</p>
+
+    <div class="border gray float-left box-sizing" style="width:100px;height:100px; "></div>
+    <div class="border float-left sq box-sizing" style="margin-left:-100px; "></div>
+
+    <div class="float-clear ""></div>
+    <hr>
+    <p>子margin-left:-20px;</p>
+
+
+
+    <div class="border gray float-left" style="width:100px;height:100px;"></div>
+    <div class="border float-left sq" style="margin-left:-20px;"></div>
+
+
+
+</body>
+
+</html>

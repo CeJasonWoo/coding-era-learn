@@ -1,0 +1,197 @@
+<!--see
+
+Flex 布局教程：语法篇
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool
+
+Flex 布局教程：实例篇
+http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <style>
+                body {
+                        background: #e2e2e2;
+                }
+                
+                .box {
+                        display: flex;
+                }
+                
+                .item {}
+                
+                .gray {
+                        background: #FFF;
+                        border-radius: 7pt;
+                        width: 50px;
+                        height: 50px;
+                        margin: 10px;
+                        padding: 5px;
+                }
+                
+                .black {
+                        background: #000;
+                        border-radius: 7pt;
+                        margin: 1px;
+                        width: 13px;
+                        height: 13px;
+                        /*width: 30%;
+                        height: 30%;*/
+                }
+                /*网格*/
+                
+                .Grid {
+                        display: flex;
+                }
+                
+                .Grid-cell {
+                        flex: 1;
+                        background: yellow;
+                        border: solid 1px;
+                }
+                /*流式布局*/
+                
+                .parent {
+                        width: 200px;
+                        height: 150px;
+                        background-color: black;
+                        display: flex;
+                        flex-flow: row wrap;
+                        align-content: flex-start;
+                }
+                
+                .child {
+                        box-sizing: border-box;
+                        background-color: white;
+                        flex: 0 0 25%;
+                        height: 50px;
+                        border: 1px solid red;
+                }
+                /*悬挂*/
+                
+                .Media {
+                        display: flex;
+                        align-items: center;
+                        width:100px;
+                }
+                
+                .Media-figure {
+                        margin-right: 1em;
+                }
+                
+                .Media-body {
+                        flex: 1;
+                }
+        </style>
+</head>
+
+<body>
+
+        <div class="Media">
+                <img class="Media-figure" style="zoom:0.1" src="test.jpg" alt="">
+                <p class="Media-body">
+                        ................
+                        ................
+                        ................
+                        ................
+                        ...........</p>
+        </div>
+
+        <div class="parent">
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+                <div class="child"></div>
+        </div>
+
+        <div class="Grid">
+                <div class="Grid-cell">...</div>
+                <div class="Grid-cell">...</div>
+                <div class="Grid-cell">...</div>
+        </div>
+        <div class="Grid">
+                <div class="Grid-cell">...</div>
+                <div class="Grid-cell" style="flex:2;">...</div>
+                <div class="Grid-cell">...</div>
+        </div>
+        <div class="Grid">
+                <div class="Grid-cell">...</div>
+                <div class="Grid-cell" style="flex:2;">...</div>
+                <div class="Grid-cell" style="flex:2;">...</div>
+        </div>
+
+        <div class="gray"></div>
+        <span class="black" style="display:block;"></span>
+
+        <div class="box gray" style="justify-content: center;">
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="justify-content: center;align-items: center;">
+                <span class="item black"></span>
+        </div>
+
+
+        <div class="box gray" style="flex-direction: column;
+  justify-content: space-between;
+  align-items: center;">
+                <span class="item black"></span>
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="flex-direction: column;
+  justify-content: space-between;">
+                <span class="item black"></span>
+                <span class="item black" style="align-self: flex-end;"></span>
+        </div>
+
+        <div class="box gray" style="flex-direction: column;
+  justify-content: space-between;
+  align-items: center;">
+                <span class="item black"></span>
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="">
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="">
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="">
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="">
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="">
+                <span class="item black"></span>
+        </div>
+
+        <div class="box gray" style="justify-content: center;align-items: center;flex-wrap: wrap;">
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+                <span class="item black"></span>
+        </div>
+
+</body>
+
+</html>
