@@ -1,15 +1,4 @@
 
-function swap(a, b) {
-    var temp = a;
-    a = b;
-    b = temp;
-}
-
-// function swap(a, b, array) {
-//     var temp = array[a];
-//     array[a] = array[b];
-//     array[b] = temp;
-// }
 
 
 // 插入排序
@@ -18,13 +7,13 @@ function swap(a, b) {
 var array = [11, 34, 2, 1, 6, 12];
 var i, j;
 
-// 先从第二个开始排序(假设i前面的是已经排好序的元素)
+// 从第二个开始(第一个元素可以认为已经被排序)
 for (var i = 1, len = array.length; i < len; i++) {
 
     console.log(i);
 
 
-    //必须把但前要排序的元素的值存起来，因为array[i]的值是会变的
+    //必须把当前要排序的元素的值存起来，因为array[i]的值是会变的
     var temp = array[i];
     var j = i - 1;
 

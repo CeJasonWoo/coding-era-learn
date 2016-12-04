@@ -6,3 +6,7 @@
 对某知识点的代码展示比千言万语更直观，比如js中的primise、es6中的generator yield等等
 - 代码片段
 方便日后开发时快速拷贝
+
+# TODO
+- 引入ES6
+- 改用webpack搭建

@@ -25,6 +25,7 @@ function quickSortMethod(targetArray) {
         } else if (targetArray[i] > targetArray[target]) {
             right.push(targetArray[i]);
         }
+        //如果出现targetArray[i] = targetArray[target]时，或许应该加一个mid数组
     }
 
     console.log('---targetArray=', targetArray,
