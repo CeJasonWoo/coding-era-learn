@@ -32,6 +32,7 @@ console.log('pow(a, n) 2^4', pow(2, 12));
 // 这样变的好处是，你只需要计算一次A*A，然后将结果(A*A)连乘自己两次就能得到A^6，即(A*A)^3=A^6。
 // 算一下发现这次一共乘了3次，少于原来的5次。
 
+//递归
 // 算法思路：
 // 1. 如果是奇数幂，x * p(x,n-1)
 // 2.如果是偶数幂，p(x , n/2) * p (x, n/2)
@@ -45,6 +46,7 @@ console.log('pow(a, n) 2^4', pow(2, 12));
 // 2^2 = 2*2
 // 通过归并，离散化，达到充分利用现有的计算结果的目的
 // 这里让我想到了动态规划，或许究其根本还是那句话：化连续为离散
+// TODO 动态规划，递推，归并
 
 function quickPow1(x, n) {
     console.log('--quickPow1', x, n);
@@ -104,10 +106,6 @@ console.log('quickPow(a, n) 2^4', quickPow(2, 12));
 
 
 
-
-
-
-
 // 与运算：先写成2进制，然后同位比较，都为1时此位为1，否则为0
 // 12=1100
 // console.log('num & 1;', 12 & 1); //0
@@ -125,6 +123,7 @@ console.log('quickPow(a, n) 2^4', quickPow(2, 12));
 // // console.log('num >>= 1;', 12>>>=1);// Uncaught ReferenceError: Invalid left-hand side in assignment
 // var testNum = 12;
 // console.log('num >>= 1;', testNum >>= 1); //6 1100 => 0110
+
 
 // 幂函数
 // console.log('2^3', Math.pow(2, 3));
