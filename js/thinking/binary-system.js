@@ -52,13 +52,16 @@
 // console.log('1&1', 1 & 1); //1
 // console.log('1&0', 1 & 0); //0
 
-// n &= (n – 1) ，清除1
+// n &= (n – 1) ，清除最右边的1
 //===========================================================================================
 // 为什么n &= (n – 1)能清除最右边的1呢？因为从二进制的角度讲，n相当于在n - 1的最低位加上1。
 // 举个例子，8（1000）= 7（0111）+ 1（0001），所以8 & 7 = （1000）&（0111）= 0（0000），
 // 清除了8最右边的1（其实就是最高位的1，因为8的二进制中只有一个1）。
 // 再比如7（0111）= 6（0110）+ 1（0001），所以7 & 6 = （0111）&（0110）= 6（0110），
 // 清除了7的二进制表示中最右边的1（也就是最低位的1）。
+// 再比如6（0110）= 5（0101）+ 1（0001），所以6 & 5 = （0110）&（0101）= 4（0100），
+
+
 
 //n &= (n – 1) ，判断是否2的n次方
 //===========================================================================================
@@ -155,45 +158,93 @@ for (var i = 0; i < 4; i++) {
 // 满足 value < (n - (m - 1 - index)), 
 // 然后标记position=index，position这个位置的元素增加1，
 // 若position < m-1，则后面的元素都等于前一个元素加1.
-function subset(len, sublen){
+function subset(len, sublen) {
     var superset = [];
     for (var i = 1; i <= len; i++) {
         superset.push(i);
     }
 
-    if(sublen){
+    if (sublen) {
         // 子集个数二进制
         // len = 1 , [0-1] => [0-1] => sum: 2 = 2^1
         // len = 2 , [00-11] => [0-3] => sum: 4 = 2^2
         // len = 3 , [000-111] => [0-7] => sum: 8 = 2^3
         // len = 4 , [0000-1111] => [0-15] => sum: 16 = 2^4
-        var sum = Math.pow(2,len);//所有子集数
+        var sum = Math.pow(2, len);//所有子集数
         // var sumSub = Math.pow(2,sublen);
         var sunMin = 0;//空子集
-        var subMax = sum-1;//最长子集，二进制就是全是1，即有len个1
-        var temp,sub = [],index;
-        while(subMax>0){
+        var subMax = sum - 1;//最长子集，二进制就是全是1，即有len个1
+        var temp, sub = [], index;
+        while (subMax > 0) {
             temp = subMax;
             sub.length = 0;
             index = 0;
-            while(temp){
-                if(temp&1){ //从二进制最低位算起，数组下标：4，3，2，1，0 <-start,结果1就代表有元素
+            while (temp) {
+                if (temp & 1) { //从二进制最低位算起，数组下标：4，3，2，1，0 <-start,结果1就代表有元素
                     sub.push(superset[index]);
                 }
-                temp>>=1;
+                temp >>= 1;
                 index += 1;
             }
-            if(sub.length === sublen){
-                console.log('---subset,',sub);
+            if (sub.length === sublen) {
+                console.log('---subset,', sub);
             }
             subMax -= 1;
         }
-    }else{
-        console.log('---subset,',[]);
+    } else {
+        console.log('---subset,', []);
     }
     return superset;
 }
-console.log('test', subset(3,2));
+console.log('test', subset(3, 2));
+
+// 枚举所有子集  i = (i - 1) & superSet 
+//===========================================================================================
+// 当我们取出最后一个1的时候，这个1将变成0，而比其低位的0将变成1。
+// 与低位技术不同的是，我们并不是要提出某一位1，而是要去除某一位的1，并补上一些我们需要的1。
+
+// 分析
+// 9 1001 superSet
+// 8 1000 sub
+// 1 0001 sub
+// 0 0000 sub
+// 当superSet为1001时，子集的格式就是X00X，
+// 也就是1001&X11X时，总会得到X00X,果然是变态技巧！ 
+
+// TODO
+// 但是这样做有什么实际意义呢？集合1001我提取成集合11也可以很好的枚举啊
+// 11
+// 10
+// 01
+
+// 8 1000 superSet
+// 0 0000
+
+// 10 1010 superSet
+// 1000
+// 0010
+
+// 11 1011  superSet
+// 10 1010
+// 9  1001
+// 8  1000
+// X  0111 skip
+// X  0110 skip
+// X  0100 skip
+// 3  0011
+// 2  0010
+// 1  0001
+
+function iteratingAllSubSet(superSet) {
+    var i = superSet;
+    while (i > 0) {
+        console.log('---iteratingAllSubSet', 'i=', i, i - 1, superSet);
+        i = (i - 1) & superSet; //7 6 5 4 3 2 1
+        // i &= (i-1); //7[6] 6[5] 4
+    }
+    return i;
+}
+console.log('iteratingAllSubSet', iteratingAllSubSet(11));
 
 
 //十进制转二进制 
@@ -221,14 +272,15 @@ function binary(num) {
 // '0100' => 2^2 = 4
 // '0101' => 2^2 + 2^0 = 5
 // forin key start->'1100' 3210 <-start
-function decimal(num){
+// TODO 这不是最优写法
+function decimal(num) {
     var res = 0;
     var len = num.length;
     var index;
-    for(var key in num){
+    for (var key in num) {
         // console.log('---decimal ', num.substr((key*1+1)*-1,1));
-        index = len-1-key;
-        if(num[index] === '1'){ 
+        index = len - 1 - key;
+        if (num[index] === '1') {
             res += Math.pow(2, key);
         }
     }
