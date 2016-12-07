@@ -73,10 +73,8 @@
     //非递归
     function fibonacci2(len) {
         var i = 2;
-        var aa = 0;
-        var bb = 1;
-        console.log(aa);
-        console.log(bb);
+        var aa = 0; console.log(aa);
+        var bb = 1; console.log(bb);
         while (i < 10) {
             var res = aa + bb;
             aa = bb;
@@ -86,26 +84,7 @@
         }
     }
     // console.log('Fibonacci2', fibonacci2(10));
-
-    // 下面解法参考 斐波那契数列知乎回答 王希 https://www.zhihu.com/question/28062458
-    //求fibonacci数列第n个数 
-    //1递归 缺点：大量重复计算
-    function fib(n) {
-        if (n < 2) return 1; //递归的出口，1，1，2
-        return fib(n - 1) + fib(n - 2);
-    }
-    //2递推
-    //当n很大时这个算法还是无能为力
-    function fib2(len) {
-        var arrayFib = [0, 1];
-        for (var i = 2; i < len; i++) {
-            arrayFib[i] = arrayFib[i - 1] + arrayFib[i - 2];
-        }
-        return arrayFib;
-    }
-    console.log('Fibonacci 递推', fib2(10));
-    //3.矩阵递推关系
-    
+    // 具体专题请看js-fibonacci.js,感觉最好的写法还是递推
 })();
 
 
