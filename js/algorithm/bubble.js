@@ -15,7 +15,11 @@ function swapIndex(a, b, array) {
 
 // 冒泡排序
 // 形象的理解，相邻元素比较！
+
 function bubbleSort(array) {
+
+    var isSwap = false;//优化，是否有元素交换位置
+
     var i, j;
     // i代表的是无序数组的长度
     for (var i = array.length; i > 1; i--) {
@@ -31,7 +35,13 @@ function bubbleSort(array) {
             console.log('---j', j, array);
             if (array[j - 1] > array[j]) {
                 swapIndex(j - 1, j, array);
+                isSwap = true;
             }
+        }
+
+        // 如果没有元素交换位置，说明排序已经是正确的，退出循环
+        if(isSwap === false){
+            break;
         }
 
     }
