@@ -31,6 +31,17 @@
 
 利用图表，可以根据不同数据规模n找到合适的算法和数据结构
 
+[数据结构和算法动态可视化](https://zh.visualgo.net/)
+
+可视化非常有助于理解抽象的问题
+
+
+
+
+
+
+
+
 # Sorting 排序
 ## 冒泡排序
 ## 插入排序
@@ -42,6 +53,16 @@
 ## 桶排序 Bucket sort
 ## 基数排序 Radix sort
 
+
+
+
+
+
+
+
+
+
+
 # Searching 查找
 ## Depth First Search (DFS)
 ## Breadth First Search (BFS)
@@ -52,14 +73,26 @@ Shortest path by Dijkstra,Min-heap as priority queue
 Shortest path by Dijkstra,unsorted array as priority queue
 Shortest path by Bellman-Ford
 
+
+
+
+
+
+
+
+
+
+
 # Common Data Structure 常规数据结构
 ## 参考
 [js数据结构](https://segmentfault.com/bookmark/1230000002226693)
 
 ## 数组
     Access	Search	Insertion	Deletion
-## 栈
-## 队列
+## 栈 
+    后进先出
+## 队列 
+    先进先出
 ## 单向链表 Singly-Linked List
 ## 双向链表 Doubly-Linked List	
 ## 跳表 Skip List
@@ -92,6 +125,20 @@ Incidence Matrix
 ## 归并法
 ## 递推法
 ## 递推法
+
+枚举子集
+Fibonacci数列
+二进制算法思想
+
+
+
+
+
+
+
+
+
+
 
 # 参考
 [英文术语](http://www.nowamagic.net/librarys/veda/detail/1866)
