@@ -2,15 +2,128 @@
 // 概念
 // http://www.cnblogs.com/mcgrady/archive/2013/09/23/3335847.html
 
+// 图的表示
+// 顶点 V(G)={V1，V2，V3，V4，V5}
+// 边 E(G)={(V1，V2)，(V1，V4)，(V2，V3)，(V2，V5)，(V3，V4)，(V3，V5)，(V4，V5)}
 
-// 顶点
-function Vertex(label){
-    this.label = label;
-    this.isVisited = false; 
+// 图的存储
+// 邻接矩阵
+// 邻接表
+
+/**
+ * 图 邻接矩阵
+ * @parameter vertices 顶点集合
+ */
+function Graph(vertices) {
+    this.vertices = vertices;//所有顶点，一维数组[]
+    var vlen = vertices.length;
+    this.edges = {};//key-[] 或者 二维数组 
+    for (var i = 0; i < vlen; i++) {
+        this.edges[vertices[i]] = [];//[][]
+
+    }
+    this.visits = {};//遍历图专用
+    for (var i = 0; i < vlen; i++) {
+        this.visits[vertices[i]] = false;
+
+    }
 }
 
+/**
+ * 顶点 一维null 二维xy 三维xyz
+ * @parameter label 顶点
+ */
+function Vertex(label) {
+    this.label = label;
+    // this.x = x;
+    // this.y = y;
 
+    this.isVisited = false; // js修改困难，还是另外使用一个访问数组存被访问的点
 
+    this.toString = function () {
+        return this.label.toString();
+    }
+}
+
+/**
+ * 边 
+ * (v -> w) 表示为 edges[v][w]
+ * (w -> v) 表示为 edges[w][v]
+ * 
+ * 邻接矩阵
+ *   v  w
+ * v 0  vw
+ * w wv 0
+ * 
+ * @parameter v 顶点
+ * @parameter w 顶点
+ * @value 权值 两点间距离
+ * @oriented 1为实线 0为不存在 [v][w]=1 则 v->w
+ */
+Graph.prototype.addEdge = function addEdge(v, w, value, oriented) {
+    this.edges[v.toString()].push(w.toString());
+    this.edges[w.toString()].push(v.toString());
+    // this.edges++;
+
+     this.value = value;//权值
+     this.oriented = oriented;//方向
+}
+
+// 深度优先搜索：
+Graph.prototype.dfs = function (v) {
+
+    if (!v) v = this.vertices[0];
+    if (this.visits[v.toString()] === true) return false;
+   this.visits[v.toString()] = true;
+    var vEdges = this.edges[v.toString()];
+    var d = vEdges.length; //v的度 无向图： d 有向图： 出度od 入度id
+
+    console.log('---dfs', v.toString(), vEdges);
+
+    if (d === 0) return false;
+    for (var i = 0; i < d; i++) {
+        //递归
+        var vchild = vEdges[i];
+        var res = this.dfs(vchild);
+        if (res === false) continue;
+    }
+
+}
+
+// 广度优先搜索：
+Graph.prototype.bfs = function (s) {
+    // if()
+
+}
+
+// 画图
+//   1
+// / | \
+// 4 3 2
+// | | |
+// 7 6 5
+function paint() {
+    var v1 = new Vertex('11');
+    var v2 = new Vertex('21');
+    var v3 = new Vertex('31');
+    var v4 = new Vertex('41');
+    var v5 = new Vertex('51');
+    var v6 = new Vertex('61');
+    var v7 = new Vertex('71');
+    var vs = [v1, v2, v3, v4, v5, v6, v7];//顶点集合 一维null 二维xy 三维xyz
+    var g = new Graph(vs);
+    g.addEdge(v1, v2);
+    g.addEdge(v1, v3);
+    g.addEdge(v1, v4);
+    g.addEdge(v2, v5);
+    g.addEdge(v3, v6);
+    g.addEdge(v4, v7);
+    return g;
+}
+var g = paint();
+console.log('Graph', g); //v = {1234567} e = {1[234] 2[15] 3[16] 4[17]}
+g.dfs();// 1 2 5 3 6 4 7
+g.bfs();// 1 2 3 4 5 6 7
 
 
 
