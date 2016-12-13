@@ -11,10 +11,10 @@
 console.log('---构造函数法---')
 function A() {
     this.name = "大毛";
-　　}
+}
 A.prototype.makeSound = function () {
     console.log("A#makeSound");
-　　}
+}
 var a = new A();
 console.log(a);
 //重载方法
