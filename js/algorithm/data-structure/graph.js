@@ -1,6 +1,8 @@
 
 // 概念
 // http://www.cnblogs.com/mcgrady/archive/2013/09/23/3335847.html
+// 代码参考 js数据结构和算法（四）图和图算法
+// https://segmentfault.com/a/1190000002410553
 
 // 图的表示
 // 顶点 V(G)={V1，V2，V3，V4，V5}
@@ -65,8 +67,8 @@ Graph.prototype.addEdge = function addEdge(v, w, value, oriented) {
     this.edges[w.toString()].push(v.toString());
     // this.edges++;
 
-     this.value = value;//权值
-     this.oriented = oriented;//方向
+    this.value = value;//权值
+    this.oriented = oriented;//方向
 }
 
 // 深度优先搜索：
@@ -74,7 +76,7 @@ Graph.prototype.dfs = function (v) {
 
     if (!v) v = this.vertices[0];
     if (this.visits[v.toString()] === true) return false;
-   this.visits[v.toString()] = true;
+    this.visits[v.toString()] = true; //todo this.visits.length = 0; //先清空数组
     var vEdges = this.edges[v.toString()];
     var d = vEdges.length; //v的度 无向图： d 有向图： 出度od 入度id
 
@@ -92,7 +94,46 @@ Graph.prototype.dfs = function (v) {
 
 // 广度优先搜索：
 Graph.prototype.bfs = function (s) {
-    // if()
+
+    // 为什么要使用队列呢？
+    // 比如：1[234] 2[15] 3[16] 4[17]
+    //   1   【1层】
+    // / | \
+    // 4 3 2 【2层】
+    // | | |
+    // 7 6 5 【3层】
+    // 我们要确保2层顶点遍历完才从3层开始遍历，通过队列就能保证遍历完每层的所有顶点
+    // 遍历顶点1时，第二层顶点[234]加入队列 
+    // 遍历2，2的下一层顶点5加入队列 然后是3的6，4的7
+    var queue = [this.vertices[0].toString()];    //队列  
+
+    this.visits.length = 0; //先清空数组
+    this.visits[this.vertices[0].toString()] = true;
+
+    while (queue.length > 0) {
+        var v = queue.shift();//从队首移除  
+        var es = this.edges[v]; //取出下层顶点
+        for (var key in es) {
+            if (this.visits[es[key]] === false) {
+                queue.push(es[key])
+                this.visits[es[key]] = true;
+            }
+        }
+        console.log('bfs v =', v, queue);
+    }
+
+    //  for (var i in this.edges) {
+    //     console.log('---bfs', i); // key
+    //      this.visits[i] = true;
+    //     var vlen = this.edges[i].length; // value
+    //      for (var j = 0; j < vlen; j++) {
+    //         if (this.visits[this.edges[i][j]] === true) continue;
+    //         console.log('---00bfs', this.edges[i][j]); // key
+
+    //         this.visits[this.edges[i][j]] = true;  
+
+    //      }
+    // }
 
 }
 
@@ -102,6 +143,16 @@ Graph.prototype.bfs = function (s) {
 // 4 3 2
 // | | |
 // 7 6 5
+// 
+// 邻接矩阵
+// 0  1  2  3  4  5  6  7 
+// 1  0  1  1  1          
+// 2  1  0        1       
+// 3  1      0       1    
+// 4  1        0        1 
+// 5     1        0       
+// 6        1        0    
+// 7           1        0  
 function paint() {
     var v1 = new Vertex('11');
     var v2 = new Vertex('21');
@@ -122,7 +173,7 @@ function paint() {
 }
 var g = paint();
 console.log('Graph', g); //v = {1234567} e = {1[234] 2[15] 3[16] 4[17]}
-g.dfs();// 1 2 5 3 6 4 7
+// g.dfs();// 1 2 5 3 6 4 7
 g.bfs();// 1 2 3 4 5 6 7
 
 
