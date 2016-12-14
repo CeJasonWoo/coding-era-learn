@@ -1,5 +1,4 @@
-// 并查
-
+// 动态连接
 // 问题：存在几个点 1 2 3 4 5，点之间连接情况是 1-2 3 4-5
 // 求出：任意两点是否存在连通
 // 1-2-3 数组表示 [1,2,3]
@@ -13,10 +12,16 @@
 // [2,2,3,5,5] union 1 3 , ids 变为 [3,3,3,5,5] => 1-2-3 4-5 
 // [3,3,3,5,5] union 1 4 , ids 变为 [5,5,5,5,5] => 1-2-3-4-5
 
-// 如果全部点连为一体，那么ids数组中所有的id都是相同的，是在是妙！
-// 参考自算法4 Union-Find http://algs4.cs.princeton.edu/15uf/
+// 如果全部点连为一体，那么ids数组中所有的id都是相同的，妙！
+// 参考自算法4 Union-Find Quick-Find http://algs4.cs.princeton.edu/15uf/
 // 并查集详解 (转) http://blog.csdn.net/dellaserss/article/details/7724401/
 // 高效，只要简单地确认两个点的父级（或者ID），就能确定两点是否在同一个集合
+
+// 缺点
+// init：N
+// union：N 还是要循环数组
+// find: 1
+
 
 function UF(len) {
     this.ids = [];//每个点对应的ID
