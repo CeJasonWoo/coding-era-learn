@@ -1,0 +1,101 @@
+<html>
+
+<head>
+	<title></title>
+
+	<style type="text/css">
+
+	</style>
+
+</head>
+
+<body>
+
+	<div>
+		<input type="button" id="button1" onclick="onBtnClick()" value="Button 1" />
+	</div>
+
+	<script type="text/javascript">
+
+// singleton
+	// var createMask = function(){
+	//   var mask;
+	//   return function(){
+	//        return mask || ( mask = document.body.appendChild( document.createElement('div') ) );
+	//   }
+	// }();
+
+
+// 桥接
+	var singleton = function( fn ){
+	    var result;
+	    console.log(result);
+	    return function(){
+	        return result || ( result = fn .apply( this, arguments ) );
+	    }
+	}
+ 
+	var createMask = singleton( function(){
+		console.log(new Date());
+		return document.body.appendChild( document.createElement('span') );
+	});
+
+// 单例模式
+	var singletop = function(fn){
+		var result;
+		function init(){
+			fn.apply(this, arguments)
+		}
+		return {
+			getInstance: function(){
+				if(!result){
+					result = init();
+				}
+				return result;
+			}
+		}
+	};
+	var createMask = singletop(function(){
+		return document.body.appendChild(document.createElement('div'));
+	});
+	createMask.getInstance();
+
+// test
+	//console.log(createMask());
+
+	function onBtnClick(){
+		createMask( function(){
+		console.log(new Date());
+		return document.body.appendChild( document.createElement('span') );
+		});
+		
+	}
+
+// 简单工厂
+	function A( name ){
+ 
+              this.name = name;
+ 
+       }
+ 
+       function ObjectFactory(){
+ 				console.log('arguments',arguments);
+              var obj = {},
+ Constructor = Array.prototype.shift.call( arguments );
+ console.log(Constructor);
+					obj.__proto__ =  typeof Constructor .prototype === 'number'  ? Object.prototype :  Constructor .prototype;
+ 
+              var ret = Constructor.apply( obj, arguments );
+ 
+              return typeof ret === 'object' ? ret : obj;
+ 
+       }
+ 
+       var a = ObjectFactory( A, 'svenzeng' );
+
+
+</script>
+
+</body>
+
+</html>
