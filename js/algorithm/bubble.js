@@ -1,5 +1,6 @@
 
 // 反例：交换数组元素位置，这种写法是无效的
+// js的数组归根结底就是obj，键值对，这点和java不同。
 function swap(a, b) {
     var temp = a;
     a = b;
