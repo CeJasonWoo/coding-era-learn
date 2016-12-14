@@ -1,32 +1,34 @@
 # Algorithm 算法
 
-# 时间复杂度
+## 时间复杂度
 
-## 参考 
-- [如何计算时间复杂度](http://m.blog.csdn.net/article/details?id=8008987)
-- [理解O(log2N)和O(Nlog2N)](http://m.blog.csdn.net/article/details?id=52775202)
+- 参考 
+  - [如何计算时间复杂度](http://m.blog.csdn.net/article/details?id=8008987)
+  - [理解O(log2N)和O(Nlog2N)](http://m.blog.csdn.net/article/details?id=52775202)
 
-## 大O记法
->（n表示数据规模， “O”表示量级 ）
-- O(1) 常数阶 我的理解(与n无关)
-- O(n) 线性阶 我的理解(单个for循环)
-- O(n^2) 平方阶 我的理解(2重for循环嵌套)
-- O(n^3) 立方阶 我的理解(3重for循环嵌套)
-- O(log2n)  对数阶 我的理解(递归)
-- O(n*log2n)  线性对数阶
-- k次方阶O(n^k)
-- 指数阶O(2^n)
-> 其中 O(2^n) 不实用， O(log2n) 在n比较大时效率较高
+- 大O记法
+  >（n表示数据规模， “O”表示量级 ）
 
-# 空间复杂度
-- 执行算法所要用到的内存Ï
+  - O(1) 常数阶 我的理解(与n无关)
+  - O(n) 线性阶 我的理解(单个for循环)
+  - O(n^2) 平方阶 我的理解(2重for循环嵌套)
+  - O(n^3) 立方阶 我的理解(3重for循环嵌套)
+  - O(log2n)  对数阶 我的理解(递归)
+  - O(n*log2n)  线性对数阶
+  - k次方阶O(n^k)
+  - 指数阶O(2^n)
 
-# 常用排序算法之性能比较
-- [Big-O Algorithm Complexity Cheat Sheet](http://www.bigocheatsheet.com/)
-- [Big O Reference](http://bigoref.com/)
-- [Big-O Complexities pdf download](https://github.com/ro31337/bigoposter/blob/master/bigoposter.pdf)
+  > 其中 O(2^n) 不实用， O(log2n) 在n比较大时效率较高
+
+- 空间复杂度
+  > 执行算法所要用到的内存
+
+- 常用排序算法之性能比较
+  - [Big-O Algorithm Complexity Cheat Sheet](http://www.bigocheatsheet.com/)
+  - [Big O Reference](http://bigoref.com/)
+  - [Big-O Complexities pdf download](https://github.com/ro31337/bigoposter/blob/master/bigoposter.pdf)
     利用图表，可以根据不同数据规模n找到合适的算法和数据结构
-- [数据结构和算法动态可视化](https://zh.visualgo.net/)
+  - [数据结构和算法动态可视化](https://zh.visualgo.net/)
     可视化非常有助于理解抽象的问题
 
 
@@ -36,7 +38,7 @@
 
 
 
-# Sorting 排序
+## Sorting 排序
 - 冒泡排序
 - 插入排序
 - 选择排序
@@ -57,7 +59,7 @@
 
 
 
-# Searching 查找
+## Searching 查找
 - Depth First Search (DFS)
 - Breadth First Search (BFS)
 - 二分查找
@@ -77,7 +79,7 @@
 
 
 
-# Common Data Structure 常规数据结构
+## Common Data Structure 常规数据结构
 - 参考
   - [js数据结构](https://segmentfault.com/bookmark/1230000002226693)
 
@@ -136,7 +138,7 @@
 
 
 
-# 参考
+## 参考
 - [英文术语](http://www.nowamagic.net/librarys/veda/detail/1866)
 - [常用排序算法之JavaScript实现](https://segmentfault.com/a/1190000000656344#articleHeader8)
 
