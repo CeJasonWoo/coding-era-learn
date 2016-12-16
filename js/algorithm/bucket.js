@@ -49,3 +49,8 @@ function bucketSort(array, num) {
 var array = [11, 34, 2, 1, 6, 12];
 console.log('array', array);
 console.log('bucketSort test', bucketSort(array));
+
+// 应用
+// 基于nodejs的桶排序
+// http://cn.v2ex.com/t/180349
+// https://github.com/keenwon/antcolony
