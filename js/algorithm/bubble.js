@@ -6,6 +6,17 @@ function swap(a, b) {
     a = b;
     b = temp;
 }
+// 测试结果如下，和java下测试结果一样
+// var a =1, b=2;
+// console.log('swap', a, b);//1 2
+// function swap(a, b) {
+//     var temp = a;
+//     a = b;
+//     b = temp;
+//     console.log('after swap inside', a, b);// 2 1
+// }
+// swap(a, b);
+// console.log('after swap', a, b);//1 2
 
 function swapIndex(a, b, array) {
     var temp = array[a];
