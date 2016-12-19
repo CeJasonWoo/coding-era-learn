@@ -38,6 +38,10 @@ var exp;
 if(exp || exp===0) {
 
 }
+//还是？
+if(exp >= 0){
+
+}
 
 // 特别注意 
 // 当exp存放的是num时，判断exp是否存在
