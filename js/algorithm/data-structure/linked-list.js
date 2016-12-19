@@ -1,20 +1,18 @@
 /*
 参考
-单向链表 http://blog.csdn.net/yinhaixiang/article/details/46048163
 
 提醒：下面这个博客的内容仅供参考思路，代码实现命名等非常糟糕，作为反例
 数据结构与算法－单向链表(js实现) http://cobain-li.iteye.com/blog/2337634
 数据结构与算法－双向链表(js实现) http://cobain-li.iteye.com/blog/2337898
 数据结构与算法－循环链表(js实现) http://cobain-li.iteye.com/blog/2340642
 
+单向链表 http://blog.csdn.net/yinhaixiang/article/details/46048163
+
 SkipList跳表基本原理 http://blog.sina.com.cn/s/blog_72995dcc01017w1t.html
 */
 
-// 本人参考了java源码实现
-
-// 提示 
+// 本人重点参考了java的LinkedList源码实现
 // linked有涉及js引用的知识，关注js的引用指针，请看js-pointer
-
 // 单向链表 Insert fast Search slow
 // 0->1->2->3->4->5->null
 // 双向链表 
@@ -22,11 +20,15 @@ SkipList跳表基本原理 http://blog.sina.com.cn/s/blog_72995dcc01017w1t.html
 // 循环
 // 0-1-2-3-4-5-0
 
-// add() 添加元素 默认从最后添加
+// 链表操作
+// linkFirst(element)
+// linkLast(element)
+// add() 添加元素,基于linkLast
 // clear() 清空链表
-// contains(element) 是否包含元素
+// indexOf(element)
+// contains(element) 是否包含元素,基于indexOf
 // display() 显示链表
-// get(index) 得到索引位置的元素 from 0 to size-1
+// get(index) 得到索引位置的元素，from 0 to size-1
 // isEmpty() 链表是否为空
 // remove(index) 移除索引位置的元素
 // reverse() 倒置链表
@@ -212,7 +214,7 @@ LinkedList.prototype.indexOf = function (element) {
     var x = this.first;
     var index = 0;
     while (x !== null) {
-        if(x.element === element) return index;
+        if (x.element === element) return index;
         console.log('---indexOf', index);
         x = x.next;
         index += 1;
@@ -223,6 +225,12 @@ LinkedList.prototype.indexOf = function (element) {
 LinkedList.prototype.contains = function (element) {
     return this.indexOf(element) !== -1;
 }
+
+LinkedList.prototype.reverse = function () {
+    // todo
+}
+
+
 
 // 测试
 var nodes = new LinkedList();
