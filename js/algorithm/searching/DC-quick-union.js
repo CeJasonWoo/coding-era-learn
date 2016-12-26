@@ -88,6 +88,8 @@ UF.prototype.unionRootWeigthed = function (a, b) {
     var aid = this.root(a);
     var bid = this.root(b);
 
+    if(aid === bid) return false;// root相同
+
     var bigTree, smallTree;
     if (this.weightings[aid] > this.weightings[bid]) {
         bigTree = aid;
