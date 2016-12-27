@@ -25,9 +25,13 @@ array1.reduce(callbackfn[, initialValue])
 // 合并操作
 // // // // // // // // // // //// // // // // // // // // //
 
+[Immutable]
+
 返回newArray
 组合两个或两个以上的数组
 array1.concat([item1[, item2[, . . . [, itemN]]]]) 
+
+[Mutable]
 
 push技巧
 将新数组追加到一个数组
@@ -40,6 +44,8 @@ Array.prototype.push.apply(arrayObj, [item1])
 // // // // // // // // // // //// // // // // // // // // // 
 // 插入操作
 // // // // // // // // // // //// // // // // // // // // //
+
+[Mutable]
 
 将新元素追加到一个数组
 arrayObj.push([item1 [item2 [. . . [itemN ]]]])
@@ -58,9 +64,13 @@ arrayObj.unshift([item1[, item2 [, . . . [, itemN]]]])
 // 移除操作
 // // // // // // // // // // //// // // // // // // // // //
 
+[Immutable]
+
 返回newArray
 返回一个数组中的一部分。
 arrayObj.slice(start, [end]) 
+
+[Mutable]
 
 从一个数组中移除元素
 arrayObj.splice(start, deleteCount, [item1[, item2[, . . . [,itemN]]]])
