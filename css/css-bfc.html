@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS-BFC</title>
+
+    <style>
+        p {
+            background: lawngreen;
+        }
+        
+        .bfc {
+            overflow: hidden;
+        }
+        
+        .main {
+            background: red;
+            height: 300px;
+        }
+        
+        .aside {
+            background: green;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+        
+        .box-main {
+            border: 5px solid red;
+            width: 300px;
+        }
+        
+        .box {
+            border: 5px solid blue;
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--
+        CSS之BFC详解
+        http://www.html-js.com/article/1866
+
+        Formatting context
+            Block fomatting context(简称BFC)
+            Inline formatting context(简称IFC)
+            CSS3中还增加了GFC和FFC.
+
+        Box:
+            是CSS布局的对象和基本单位.
+            元素的类型和display属性，决定了这个Box的类型
+
+        block-level box: 
+            display属性为block, list-item, table的元素，会生成block-level box。
+            并且参与block fomatting context。 
+        inline-level box: 
+            display属性为inline, inline-block, inline-table的元素，会生成inline-level box。
+            并且参与inline formatting context。
+
+        注意：
+            根据上面的基础，只有Block-level box可以参与创建BFC。
+            也就是span不能参与BFC，div才能参与BFC?
+
+        BFC有一下特性：
+            1.内部的Box会在垂直方向，从顶部开始一个接一个地放置。
+            2.Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生叠加
+            3.每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+            4.BFC的区域不会与float box叠加。
+            5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然。
+            6.计算BFC的高度时，浮动元素也参与计算。
+
+        如何触发BFC：
+            1.float 除了none以外的值
+            2.overflow 除了visible 以外的值（hidden，auto，scroll）
+            3.display (table-cell，table-caption，inline-block, flex, inline-flex)
+            4.position值为（absolute，fixed）
+            5.fieldset元素
+    -->
+
+    <!--1.解决margin叠加问题 特性5-->
+    <div class="bfc">
+        <p>
+            hello world
+        </p>
+    </div>
+    <p>
+        hello world
+    </p>
+    <p>
+        hello world
+    </p>
+
+    <!--2.用于布局
+    BFC不会与浮动盒子叠加 特性3和4-->
+    <div class="aside"></div>
+    <div class="main bfc"></div>
+
+    <!--3.用于清除浮动，计算BFC高度.
+    里面两个子元素浮动的关系，两个box已经脱离了父元素的包含块，父元素高度已经塌陷，
+    我们需要让父元素包含两个box子元素，这样计算高度时，两个浮动子元素就会参与，
+    所以我们要闭合浮动，触发父元素的BFC 特性6
+    -->
+    <div class="box-main bfc">
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+
+
+
+</html>
+</body>
