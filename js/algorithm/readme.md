@@ -139,26 +139,26 @@
 
 
 ## 参考
-- [英文术语](http://www.nowamagic.net/librarys/veda/detail/1866)
-- [常用排序算法之JavaScript实现](https://segmentfault.com/a/1190000000656344#articleHeader8)
+- [英文术语](http://www.nowamagic.net/librarys/veda/detail/1866) menu
+- [常用排序算法之JavaScript实现](https://segmentfault.com/a/1190000000656344#articleHeader8) done
 
     一、插入排序 二、二分插入排序 三、选择排序 四、冒泡排序 五、快速排序 六、堆排序 七、归并排序 八、桶排序 九、计数排序
 
-- [javascript常用经典算法实例详解](http://www.jb51.net/article/75437.htm)
+- [javascript常用经典算法实例详解](http://www.jb51.net/article/75437.htm) done
 
     线性查找 二分查找 字符串反转 单链表实现 堆排序 
     不相交集合查找、合并 归纳法 多数问题 全排列 分治法 split算法的思想应用
  
-- [常见算法是js实现汇总](http://www.cnblogs.com/super-d2/archive/2011/10/16/2212865.html)
+- [常见算法是js实现汇总](http://www.cnblogs.com/super-d2/archive/2011/10/16/2212865.html) done
 
     去重 十六进制颜色值的随机生成 求字符串长度 希尔排序 js模拟多线程 近似字符串匹配问题
     来文史特距离(Levenshtein Distance)
 
-- [JavaScript探索者](http://www.108js.com/index5.html)
+- [JavaScript探索者](http://www.108js.com/index5.html) lib
 
-- [一步一步写算法](http://blog.csdn.net/feixiaoxing/article/category/878822/4)
+- [一步一步写算法](http://blog.csdn.net/feixiaoxing/article/category/878822/4) menu
 
-- [xingoo博客](http://www.cnblogs.com/xing901022/category/414816.html)
+- [xingoo博客](http://www.cnblogs.com/xing901022/category/414816.html) menu
 
   - AVL树 非递归版归并排序 希尔排序
   - 二叉排序树1 二叉排序树的删除操作
@@ -197,14 +197,16 @@
   - 伸展树
   - AVL树
 
-- [汤姆大叔的博客 深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
+- [汤姆大叔的博客 深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html) base
 
 
-- [知识库 算法与数据结构](http://lib.csdn.net/base/datastructure)
+- [知识库 算法与数据结构](http://lib.csdn.net/base/datastructure) lib
 
-- [李可可的博客](http://cobain-li.iteye.com/category/365366)
+- [李可可的博客](http://cobain-li.iteye.com/category/365366) done
   - 数据结构与算法-字典(js实现)
   - 数据结构与算法－链表(js实现)
   - 数据结构与算法－队列篇(js实现)
   - 数据结构与算法－栈篇(js实现)
 
+- github
+  日本人写的算法动画，可做参考 https://github.com/norahiko/sort-visualize

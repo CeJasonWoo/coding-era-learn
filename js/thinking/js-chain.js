@@ -60,7 +60,7 @@ function oldChain(obj) {
 function openChain(obj) {
     //执行chain直接返回一个方法(类)，这样执行chain(obj)('method1',4)就相当于执行这个方法，参数是('method1',4) 
     return function () {
-        //定义Self = 本方法的调用者 
+        //定义Self = 本方法的调用者
         var Self = arguments.callee;
         //给调用者一个属性 即obj参数，这样每次链式调用的时候就可以获得最初的那个obj，而这个obj正好是被链式调用的那个方法，这里是classB 
         Self.obj = obj;
