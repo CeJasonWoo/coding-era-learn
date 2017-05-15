@@ -228,16 +228,22 @@ http://www.cnblogs.com/ys-ys/p/5403437.html
 
 <body>
 
-	<h1>case1</h1>
-	<h6>当padding应用于行内元素，则对水平面有影响，对垂直面无影响(在没有设置background的情况下)</h6>
-	<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-		<strong class="mar-strong">hello world</strong> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	</p>
-	<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+	<!--当padding应用于行内元素，则对水平面有影响，对垂直面无影响(在没有设置background的情况下)-->
+	<div class="row">
+		<h1>case1</h1>
+		<h6>当padding应用于行内元素，则对水平面有影响，对垂直面无影响(在没有设置background的情况下)</h6>
+		<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			<strong class="mar-strong">hello world</strong> aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+		</p>
+		<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+	</div>
 
-	<h1>case2</h1>
-	<h6>背景图片跟随滚动条，background-attachment: fixed</h6>
-	<div class="div-bg bg-attachment"></div>
+	<!--背景图片跟随滚动条-->
+	<div class="row">
+		<h1>case2</h1>
+		<h6>背景图片跟随滚动条，background-attachment: fixed</h6>
+		<div class="div-bg bg-attachment"></div>
+	</div>
 
 	<div class="row">
 		<h1>case3</h1>
@@ -249,8 +255,7 @@ http://www.cnblogs.com/ys-ys/p/5403437.html
 		<span style="margin:10px;">aaa</span>
 
 		<h6>外边距垂直合并
-			<p>垂直相邻的外边距会进行合并。两个外边距中较小的一个会被较大的一个合并(你也可以理解为"重叠")。
-			</p>
+			<p>垂直相邻的外边距会进行合并。两个外边距中较小的一个会被较大的一个合并(你也可以理解为"重叠")。</p>
 		</h6>
 		<div class="first-div" style="margin-bottom:50px;">this is div-1</div>
 		<div class="second-div" style=" margin-top:20px;">this is div-2</div>

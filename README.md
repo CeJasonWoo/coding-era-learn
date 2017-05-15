@@ -19,7 +19,7 @@
 - webpack搭建
 
 [awesome-webpack](https://github.com/d3viant0ne/awesome-webpack)
-[see](https://github.com/ruanyf/webpack-demos)
+[see demos](https://github.com/ruanyf/webpack-demos)
 
     webpack --progress --colors
     webpack --watch
@@ -41,7 +41,7 @@
     HTTP/2 普及之后，不打包反而更好，SystemJS是一个动态的模块加载器
     要用ES6，就要Babel转译
     要用函数式编程和强类型语言，就要Typescript 或者 Flow
-    要用Promise,就能用上Fetch,别忘了加上 Fetch 的 Polyfill，因为 Safari 不支持 Fetch。
+    要用Promise,就要用上Fetch（基于Promise实现）,别忘了加上 Fetch 的 Polyfill，因为 Safari 不支持 Fetch。
     要用await/async 管理 Promise, 就必须用ES6+、 Babel转译，
 
 [see](https://zhuanlan.zhihu.com/p/22782487)
